@@ -1,19 +1,91 @@
 
 Hub+ Codemap
 
+In general Hub+ uses standard django apps. We started with a number of pinax apps some of which have been overriden and modified in our apps. Hub+ diverges from standard django/pinax in a couple of respects:
+
+1. User object has been monkey-patched (we don't change the code) to add various attributes, change password encryption algorithm, and change the name of the table that is used, for compatability with HubSpace (our space booking app which shares the database).  We also patch the relationship with groups to relate our new users to a new group structure in a way which facilitates our permissions system.
+
+2. We have created our own permissions system, which is much more powerful than the stock django permissions. This is the major difference in how you need to code Hub+ apps which are permission aware as compared with standard django.
+i)   All classes (content_types) which are permissioned are patched at start up to become "permissionable", including:
+     a) being assigned a GenericReference (a persistent unique identifier of any object through a sql table indirection). 
+     b) adding various methods for permissions management
+     c) modifying the manager to support permissioned fetching of objects
+     see: apps/plus_permissions/permissionable.py:security_patch
+
+ii)  Functions or methods which pick up a permissioned object from the database, should return objects which are wrapped in a particular way such that only attributes and methods which the user is allowed to use can be accessed. The idea is this should reduce the risk of programmers accidentally giving access to certain data. either:
+     a) use a special get method 'plus_get' on the object manager e.g. WikiPage.objects.plus_get(user=request.user, id=1)
+     b) use a decorator for view functions which accept object_ids - see plus_permissions/decorators.py
+     c) explicitly wrap an object using secure_wrap().
+     The efficiency of wrapping in any of the above functions can be dramatically improved by restricting the required interfaces.
+
+iii) When rendering to templates to avoid attribute errors on forbidden attribute you can optionally use the TemplateSecureWrapper which will return NotViewable, which is an object which evaluates to False in boolean context and empty string when rendered.
+
+The Permissions Model
+---------------------
+Permissions are a three-way mapping between Agent (User or a Group who has rights), a permissioned object (e.g. document, page, group), and an interface to the permissioned object (e.g. 'View', 'Edit', 'Change Permissions' etc). 
+
+In practice, we define a number of SecurityContexts each of which may correspond to an object or a set of objects e.g. a page, or all pages in a particular group. 
+
+Access to objects in the SecurityContext is then mediated by the SecurityTag model. A SecurityTag is a mapping between a SecurityContext, an Interface and a set of Agents. Each agent in the set can access the attributes and methods of each object in the SecurityContext that are specified in the Interface definition.  
+
+A user can access an interface via their membership of groups. Users acquire permissions from the Agents (groups) they are members of, and group recursively acquire permissions from groups they are members of.
+
+Redis Caching
+-------------
+In order to evaluate permissions, we need to know which 'Agents' a particular user has. e.g. what groups they are a member of. Because groups can be members of groups, this calculation is recursive and potentially computationally intensive. We therefore use redis to cache the agents (groups) which any particular user can access object through. 
+
+
+UserInterface to the Permission Model
+-------------------------------------
+Permissions are allocated in the UI using a simplified model which places further constraints on the underlying Permissions model. Most objects use the SecurityContext of the group they are created inside however its possible to override these Permissions on a per object basis. Although it is not possible to group objects other ways in the UI, the underlying model allows arbitrary grouping of objects under SecurityContexts.
+
+For a specific SecurityContext the UI presents a set of object_types which may exist within it. e.g. in a group we can set permissions on Pages, Uploads, Comments etc. For each type we have a set of sliders with each slider representing a SecurityTag. If the slider is set "low" access is highly restricted, as the slider is moved upwards more agents are added to the SecurityTag. In order to fit into this model the agents at each level must be increasing in access level - it isn't possible to give a specific SecurityTag to agents higher in the slider without giving it to all those below it.
+
+
+
+Permission Configuration for new content_types
+----------------------------------------------
+To create a new permissioned content type we must add a configuration file for the type: apps/plus_permissions/types/OurNewType.py
+
+This file is used to add the new types to various maps (using functions), and define the interfaces that will wrap the objects.
+
+*Configuration Functions*
+- SetPossibleTypes(content_type, []): this is a list of types that can be created within this type
+- SetVisibleTypes(content_type, [WikiPage]) : What sets of SecurityTags/Interfaces will be displayed in the UI list when we set permissions on an object of this type
+- SetTypeLabels(content_type, 'Page') : What will the type be called when it is displayed in the UI
+- add_type_to_interface_map(WikiPage, {map of interface_ids to Actual Interface objects}):
+- SetSliderOptions(WikiPage, 'InterfaceOrder':[], 'InterfaceLabels':{}) order in which the interface_ids exist and a map of interface_ids to labels.
+
+*Interface Definition*
+Interfaces are defined as old style classes with class attributes which are equal to one of three Class objects which represent reading, writing or calling functions e.g.
+
+class WikiPageEditor:
+    set_name = InterfaceCallProperty
+    title = InterfaceWriteProperty
+    content = InterfaceWriteProperty
+    license = InterfaceWriteProperty
+    copyright_holder = InterfaceWriteProperty
+    stub = InterfaceWriteProperty
+    author = InterfaceWriteProperty
+    author = InterfaceReadProperty
+ 
+If an object is security wrapped for a particular user who has the "WikiPageEditor" interface, then they will be able to readand write the security wrapped object accordingly.
+
+
+
+Apart from our heavily customised permissions system for the most part we are following standard django idioms and where possible using existing django/pinax apps. These are summarized below.
+
+
 Important Apps (in the apps. directory)
 
-
 1) about
-Currently, we haven't changed the app. But the templates directory contains static pages.
-
-django_evolution  (copy of evolution, an app. which helps you evolve the db-schema when the ORM schema evolves, not changed)
+Currently, we haven't changed the app. But the templates directory contains our own static pages.
 
 2) account
 Forked from Pinax original. 
 Important functions in view.py include 
 - home() which handles front page for both logged-in and non logged-in users (including getting from our own Feed app.)
-- apply(), site_invite(), and proxied signup functions based on our own proxying structure
+- apply(), site_invite(), and proxied signup functions based on our own generic proxying structure - hmac_proxy which is part of the plus permission app. 
 There are some other original account management functions left over in views.py which are not used and probably incompatible with current Hub+
 
 3) avatar
@@ -22,6 +94,7 @@ This is the Pinax avatar app. which we've forked. Mainly we've replaced the refe
 *) django403
 Captures the 403 error and gives it a different page. This is where we'd *like* to add information about what specifically caused the permission error. (Useful for debugging and to give the users better information.) Unfortunately, by the time we get access to this, (in the middleware.py file), our PlusPermissionNoAccessException and the information it contains, seems to have been thrown away.
 
+*) django_evolution  (copy of evolution, an app. which helps you evolve the db-schema when the ORM schema evolves, not changed) - this should probably be an external app.
 
 *) friends_app       
 Not used
