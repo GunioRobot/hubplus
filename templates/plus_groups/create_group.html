@@ -20,7 +20,7 @@
     <input type='hidden' name='is_hub' value='True'/>
     <input type="hidden" name="group_type" value="internal"/>
     {% else %}
-    <input type='hidden' name='is_hub' value='False'/>   
+    <input type='hidden' name='is_hub' value='False'/>
     {% endif %}
 
     <fieldset>
@@ -62,7 +62,7 @@
           </div>
           <div class="value">
             <textarea id="description" name="description" rows="5">{{form.data.description}}</textarea>
-            {{form.description.errors}}	
+            {{form.description.errors}}
           </div>
         </li>
 
@@ -109,14 +109,14 @@
       </ul>
 
     </fieldset>
-    
+
     {% if is_hub %}
     <input type="hidden" name="permissions_set" value="private"/>
     {% else %}
     <fieldset>
 
       <ul>
-      
+
         <li>
           <div class="label">
             {{form.permissions_set.errors}}
@@ -158,17 +158,17 @@
         </li>
 
       </ul>
-  
+
     </fieldset>
     {% endif %}
 
 
-  
+
   <!--
   <fieldset>
     <h4>Links</h4>
       <ul class="disabled custom_labels">
-        
+
         <li>
     <div class="label_extended">
       <input  id="link_title" class="text" type="text" value="Website" />
@@ -236,7 +236,7 @@
     </div>
         </li>
       </ul>
-      
+
     </fieldset>-->
 
     <fieldset class="buttons">

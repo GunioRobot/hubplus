@@ -34,8 +34,8 @@ a {
     position:relative;
 }
 
-#left-container, 
-#right-container, 
+#left-container,
+#right-container,
 #center-container {
     height:600px;
     position:absolute;
@@ -57,7 +57,7 @@ a {
     background-image:url('col2.png');
     background-position:center right;
     border-left:1px solid #ddd;
-    
+
 }
 
 #right-container {

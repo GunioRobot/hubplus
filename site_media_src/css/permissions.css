@@ -11,7 +11,7 @@ HUB PLUS 2009
 	list-style	: none;
 	overflow	: hidden;
 	text-align	: center;
-	position:relative;	
+	position:relative;
 	width		: 100%;
 	vertical-align: top;
 }
@@ -28,7 +28,7 @@ HUB PLUS 2009
 
 .permissions_slider .attribute_column {
 	width		: 15%;
-	text-align      : center; 
+	text-align      : center;
 }
 
 .permissions_slider .group_column,

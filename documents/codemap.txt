@@ -7,7 +7,7 @@ In general Hub+ uses standard django apps. We started with a number of pinax app
 
 2. We have created our own permissions system, which is much more powerful than the stock django permissions. This is the major difference in how you need to code Hub+ apps which are permission aware as compared with standard django.
 i)   All classes (content_types) which are permissioned are patched at start up to become "permissionable", including:
-     a) being assigned a GenericReference (a persistent unique identifier of any object through a sql table indirection). 
+     a) being assigned a GenericReference (a persistent unique identifier of any object through a sql table indirection).
      b) adding various methods for permissions management
      c) modifying the manager to support permissioned fetching of objects
      see: apps/plus_permissions/permissionable.py:security_patch
@@ -22,17 +22,17 @@ iii) When rendering to templates to avoid attribute errors on forbidden attribut
 
 The Permissions Model
 ---------------------
-Permissions are a three-way mapping between Agent (User or a Group who has rights), a permissioned object (e.g. document, page, group), and an interface to the permissioned object (e.g. 'View', 'Edit', 'Change Permissions' etc). 
+Permissions are a three-way mapping between Agent (User or a Group who has rights), a permissioned object (e.g. document, page, group), and an interface to the permissioned object (e.g. 'View', 'Edit', 'Change Permissions' etc).
 
-In practice, we define a number of SecurityContexts each of which may correspond to an object or a set of objects e.g. a page, or all pages in a particular group. 
+In practice, we define a number of SecurityContexts each of which may correspond to an object or a set of objects e.g. a page, or all pages in a particular group.
 
-Access to objects in the SecurityContext is then mediated by the SecurityTag model. A SecurityTag is a mapping between a SecurityContext, an Interface and a set of Agents. Each agent in the set can access the attributes and methods of each object in the SecurityContext that are specified in the Interface definition.  
+Access to objects in the SecurityContext is then mediated by the SecurityTag model. A SecurityTag is a mapping between a SecurityContext, an Interface and a set of Agents. Each agent in the set can access the attributes and methods of each object in the SecurityContext that are specified in the Interface definition.
 
 A user can access an interface via their membership of groups. Users acquire permissions from the Agents (groups) they are members of, and group recursively acquire permissions from groups they are members of.
 
 Redis Caching
 -------------
-In order to evaluate permissions, we need to know which 'Agents' a particular user has. e.g. what groups they are a member of. Because groups can be members of groups, this calculation is recursive and potentially computationally intensive. We therefore use redis to cache the agents (groups) which any particular user can access object through. 
+In order to evaluate permissions, we need to know which 'Agents' a particular user has. e.g. what groups they are a member of. Because groups can be members of groups, this calculation is recursive and potentially computationally intensive. We therefore use redis to cache the agents (groups) which any particular user can access object through.
 
 
 UserInterface to the Permission Model
@@ -68,7 +68,7 @@ class WikiPageEditor:
     stub = InterfaceWriteProperty
     author = InterfaceWriteProperty
     author = InterfaceReadProperty
- 
+
 If an object is security wrapped for a particular user who has the "WikiPageEditor" interface, then they will be able to readand write the security wrapped object accordingly.
 
 
@@ -82,10 +82,10 @@ Important Apps (in the apps. directory)
 Currently, we haven't changed the app. But the templates directory contains our own static pages.
 
 2) account
-Forked from Pinax original. 
-Important functions in view.py include 
+Forked from Pinax original.
+Important functions in view.py include
 - home() which handles front page for both logged-in and non logged-in users (including getting from our own Feed app.)
-- apply(), site_invite(), and proxied signup functions based on our own generic proxying structure - hmac_proxy which is part of the plus permission app. 
+- apply(), site_invite(), and proxied signup functions based on our own generic proxying structure - hmac_proxy which is part of the plus permission app.
 There are some other original account management functions left over in views.py which are not used and probably incompatible with current Hub+
 
 3) avatar
@@ -96,20 +96,20 @@ Captures the 403 error and gives it a different page. This is where we'd *like* 
 
 *) django_evolution  (copy of evolution, an app. which helps you evolve the db-schema when the ORM schema evolves, not changed) - this should probably be an external app.
 
-*) friends_app       
+*) friends_app
 Not used
 
 
-*) messages       
+*) messages
 Forked from Pinax original. The inter-user messaging app.
 
 The main changes here are to do with putting the functions within a single tabbed page as UI. The data-model for messages is unchanged, but we now have new urls which call a view in_out_trash_comp(), a single view function which replaces the earlier in / out / trash and compose views.
 
-*) microblogging  
+*) microblogging
 This is the original Pinax microblogging app. which we've forked. I was in the process of moving from this to the new "plus_feed" app. but there's still some parts of this in use. Ideally, all important feed-related code should be migrated to plus_feed and microblogging should be decommissioned.
 
-Important in models.py : 
-We no longer use TweetInstance or Tweet for individual messages, but we do still use the Following class (and the FollowingManager) to represent and manipulat who's following who. 
+Important in models.py :
+We no longer use TweetInstance or Tweet for individual messages, but we do still use the Following class (and the FollowingManager) to represent and manipulat who's following who.
 
 In terms of views.py / urls.py we still use the views for managing follower relationships (mainly toggle_follow and toggle_group) AND for posting a new tweet (via. new ajax UI)
 
@@ -121,25 +121,25 @@ New app. for FeedItems. models.py defines the new FeedItem class and the FeedMan
 
 *) plus_flakes (never started, should be removed if found)
 
-*) plus_comments 
+*) plus_comments
 Intended as a custom wrapper around the default django threaded-comments app. This is where we'd be able to modify the comments to fit them into our permissioning / notification feed framework. However, comments are still *currently* relying on the standard Django threaded_comments app. (Which is in site-packages)
 
-*) plus_permissions  
+*) plus_permissions
 An all new app. to support our permissioning framework. Includes models, views. Importantly, decorators for wrapping other views to ensure that they permission-protect objects that they work with. All the permission testing code lives in this app including "has_access" (in models).
 
 *) plus_wiki
 Our new app. that defines a WikiPage. Note that our WikiPages are subclasses of a class called "ResourceCommon" defined in the plus_groups app. resources_common.py which has the common code for handling anything that lives "inside" a TgGroup.
 
 *) synced
-The app. for making syncer connections with HubSpace. Syncer calls *into* Hub+ via http (handlers in views.py). Hub+ talks out to syncer through the functions in sync_tools.py. models.py is used just to keep a single dictionary of the connection id in the database (only place we can guarantee it's seen everywhere in django). __init__.py sets up the single-sign on. 
+The app. for making syncer connections with HubSpace. Syncer calls *into* Hub+ via http (handlers in views.py). Hub+ talks out to syncer through the functions in sync_tools.py. models.py is used just to keep a single dictionary of the connection id in the database (only place we can guarantee it's seen everywhere in django). __init__.py sets up the single-sign on.
 
 *) plus_contacts
 A new app. designed for managing lists of Applications and Contacts. In Hub+ every new application or invite creates a Contact. If the Contact goes through the right process of accepting an invitation or having an appllication accepted, a User is created. models.py defines Applications and Contacts (+ the logic of changing status)
 
-*) plus_groups  
+*) plus_groups
 Our main app. that wraps a TgGroup model table (originally from HubSpace) and uses it as the main organizing principle for people and content within Hub+.
 
-A couple of notes : 
+A couple of notes :
 - Hubs are just a particular kind of TgGroup
 - models.py also handles group membership, views.py handles group joing / leaving
 - views.py also has various functions for setting up searches within groups
@@ -152,17 +152,17 @@ A couple of notes :
 
 
 *) plus_resources
-This is a new app. Slightly confusingly named. "Resource" is a model representing uploaded files. Files are always uploaded within a group. 
+This is a new app. Slightly confusingly named. "Resource" is a model representing uploaded files. Files are always uploaded within a group.
 
 Resources are a subclass of ResourceCommon (from plus_groups)
- 
+
 
 *) profiles
 The original Pinax Profile class has been changed significantly. One of the main changes is that we share data between Hub+ and HubSpace in the same database. And HubSpace stores information in its user class (tg_user table)
 
 Therefore, we've changed Profile so that many fields are now proxies to equivalent fields that we've hacked into Django's User class (see plus_user). Code for this is in models.py.
 
-The profiles app. also defines HostQuestions, survey questions that were requested by hosts and psychosocial. Ideally, these should be moved to individual generic questions so that hosts can define their own polls. 
+The profiles app. also defines HostQuestions, survey questions that were requested by hosts and psychosocial. Ideally, these should be moved to individual generic questions so that hosts can define their own polls.
 
 
 *) photos (not used)

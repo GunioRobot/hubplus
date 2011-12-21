@@ -18,7 +18,7 @@
 				<li><a href="{% url messages_all %}">{% trans "Inbox" %}</a></li>
 				<li><a href="{% url acct_settings %}">{% trans "Settings" %}</a></li>
 				<li class="last"><a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a></li>
-				{% else %} 
+				{% else %}
 				<li class="first"><a href="{% url acct_apply %}">{% trans "Apply to join" %}</a></li>
 				<li><span>{% trans "or" %}</span></li>
 				<li class="last"><a href="{% url acct_login %}?next={{request.get_full_path}}">{% trans "Log in" %}</a></li>
@@ -29,7 +29,7 @@
 		<!--
 		{% block locale_switcher %}
 		<li>
-			<form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" 
+			<form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}"
 			  method="post" id="locale_switcher">
 				<select name="language" onchange="$("#locale_switcher").submit()">
 					{% for lang in LANGUAGES %}
@@ -50,4 +50,4 @@
 	</div>
 
 	<!--div id="subnav" class="clearfix">{% block subnav %}&nbsp;{% endblock %}</div-->
- 
+

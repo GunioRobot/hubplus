@@ -35,7 +35,7 @@
     {% endfor %}
   </ul>
   <ul class="display_options">
-    <li class="sort"> 
+    <li class="sort">
       <label>{% trans "Sort by" %}:</label>
       <select size="1" id="order" name="order">
 	{% if listing_args.search_terms %}
@@ -62,11 +62,11 @@
     {% endif %}
     {% endfor %}
   </div>
-  
+
 </div>
 {% else %}
 <ul class="display_options">
-    <li class="sort"> 
+    <li class="sort">
       <label>{% trans "Sort by" %}:</label>
       <select size="1" name="order" id="order" >
 	{% if listing_args.search_terms %}
@@ -79,7 +79,7 @@
       </select>
     </li>
   </ul>
-<div id="results_all" > <!-- class="page_content" > --> 
+<div id="results_all" > <!-- class="page_content" > -->
   {% listing search.All "All" listing_args.order listing_args.search_terms listing_args %}
 
 </div>

@@ -13,11 +13,11 @@ $(function() {
     var ymap = document.getElementById('ymap');
     if(ymap) {
         var map = new YMap(ymap);
-        // Add map type control  
-        map.addTypeControl();  
-        // Add map zoom (long) control  
-        map.addZoomLong();  
-        // Add the Pan Control  
+        // Add map type control
+        map.addTypeControl();
+        // Add map zoom (long) control
+        map.addZoomLong();
+        // Add the Pan Control
         map.addPanControl();
         for(var i = 0; i < _geo.length; ++i) {
             var g = _geo[i];
@@ -30,7 +30,7 @@ $(function() {
             var myMarkerContent = g[2];
             // When the marker is clicked, show the SmartWindow
             YEvent.Capture(myMarker, EventsList.MouseClick, function() {
-                myMarker.openSmartWindow(myMarkerContent); 
+                myMarker.openSmartWindow(myMarkerContent);
             });
             // Put the marker on the map
             map.addOverlay(myMarker);

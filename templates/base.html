@@ -25,7 +25,7 @@
                 <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/{{css_file_path}}" media="all" />
             {% endfor %}
 	<!-- SCRIPT: YUI -->
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}js/yui2/build/logger/assets/skins/sam/logger.css" />	
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}js/yui2/build/logger/assets/skins/sam/logger.css" />
 	{% else %}
 	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/hubplus_core{{CSS_VERSION_NO}}.css" media="all" />
 	{% endif %}
@@ -45,13 +45,13 @@
               <script src="{{ MEDIA_URL }}js/{{js_file_path}}" charset="utf-8"></script>
            {% endfor %}
 	{% else %}
-	   <script type="text/javascript" src="{{ MEDIA_URL }}js/hubplus_core{{JS_VERSION_NO}}.js"></script> 
+	   <script type="text/javascript" src="{{ MEDIA_URL }}js/hubplus_core{{JS_VERSION_NO}}.js"></script>
 	{% endif %}
-	 
+
 	<!-- XXX TinyMCE doesn't seem to work with the compression at the moment -->
 	<script src="{{ MEDIA_URL }}js/tinymce/jscripts/tiny_mce/tiny_mce.js" charset="utf-8"></script>
 	<!-- end of workaround -->
-	
+
 	{% block extra_head_base %}
 	{% block extra_head %}{% endblock %}
 	{% endblock %}
@@ -59,11 +59,11 @@
 
 <body>
 
-	<iframe id="yui-history-iframe" src="/site_media/js/yui2/build/history/assets/blank.html"></iframe> 
-	<input id="yui-history-field" type="hidden" /> 
-	<div class="overlay" id="overlay"> 
+	<iframe id="yui-history-iframe" src="/site_media/js/yui2/build/history/assets/blank.html"></iframe>
+	<input id="yui-history-field" type="hidden" />
+	<div class="overlay" id="overlay">
 		<div id="overlay_content"></div>
-	</div><!-- overlayed element, which is styled with external stylesheet --> 
+	</div><!-- overlayed element, which is styled with external stylesheet -->
 
 	<!-- wrapper -->
 	<div id='wrapper'>
@@ -111,8 +111,8 @@
 				      {% ifequal status_type 'profile' %}
 				          {% microblogging_form other_user 'True' %}
 				      {% endifequal %}
-				      {% endautoescape %} 
-				      
+				      {% endautoescape %}
+
 				  {% endif %}
 
 				</div>
@@ -121,7 +121,7 @@
 
 			</div>
 			<!-- end page_header -->
- 
+
 			<!-- body -->
 			<div id='body'>
   			    {% block body %}{% endblock %}
@@ -137,7 +137,7 @@
 			{% endblock %}
 		</div>
 		<!-- end main -->
-			
+
 		<!-- footer -->
 		<div id='footer'>
 			{% block footer %} {% endblock %}
@@ -157,5 +157,5 @@
 <!-- Analytics Ends -->
 
 </body>
-<!-- DEBUG_STATUS=OK -->	
+<!-- DEBUG_STATUS=OK -->
 </html>

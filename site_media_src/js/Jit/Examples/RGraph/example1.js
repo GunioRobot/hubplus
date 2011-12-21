@@ -1,7 +1,7 @@
 var Log = {
     elem: false,
     write: function(text){
-        if (!this.elem) 
+        if (!this.elem)
             this.elem = document.getElementById('log');
         this.elem.innerHTML = text;
         this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
@@ -375,10 +375,10 @@ function init(){
         }
     };
     //end
-    
+
     var infovis = document.getElementById('infovis');
     var w = infovis.offsetWidth, h = infovis.offsetHeight;
-    
+
     //init canvas
     //Create a new canvas instance.
     var canvas = new Canvas('mycanvas', {
@@ -386,14 +386,14 @@ function init(){
         'injectInto': 'infovis',
         'width': w,
         'height': h,
-        
+
         //Optional: create a background canvas and plot
         //concentric circles in it.
         'backgroundCanvas': {
             'styles': {
                 'strokeStyle': '#555'
             },
-            
+
             'impl': {
                 'init': function(){},
                 'plot': function(canvas, ctx){
@@ -416,7 +416,7 @@ function init(){
         Node: {
             color: '#ccddee'
         },
-        
+
         Edge: {
             color: '#772277'
         },
@@ -427,7 +427,7 @@ function init(){
             //This list is taken from the data property of each JSON node.
             document.getElementById('inner-details').innerHTML = node.data.relation;
         },
-        
+
         onAfterCompute: function(){
             Log.write("done");
         },
@@ -450,11 +450,11 @@ function init(){
             if (node._depth <= 1) {
                 style.fontSize = "0.8em";
                 style.color = "#ccc";
-            
+
             } else if(node._depth == 2){
                 style.fontSize = "0.7em";
                 style.color = "#494949";
-            
+
             } else {
                 style.display = 'none';
             }
@@ -464,7 +464,7 @@ function init(){
             style.left = (left - w / 2) + 'px';
         }
     });
-    
+
     //load JSON data
     rgraph.loadJSON(json);
     //compute positions and make the first plot

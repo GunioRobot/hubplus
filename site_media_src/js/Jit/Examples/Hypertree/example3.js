@@ -1,7 +1,7 @@
 var Log = {
     elem: false,
     write: function(text){
-        if (!this.elem) 
+        if (!this.elem)
             this.elem = document.getElementById('log');
         this.elem.innerHTML = text;
         this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
@@ -422,13 +422,13 @@ function init(){
         }],
         "data": []
     };
-    
+
     var graph = '[{id:"190_0", adjacencies:["node0"]}, {id:"node0", name:"node0 name", data:{$dim:8.660354683365695, "some other key":"some other value"}, adjacencies:["node1", "node2", "node3", "node4", "node5"]}, {id:"node1", name:"node1 name", data:{$dim:21.118129724156983, "some other key":"some other value"}, adjacencies:["node0", "node2", "node3", "node4", "node5"]}, {id:"node2", name:"node2 name", data:{$dim:6.688951018413683, "some other key":"some other value"}, adjacencies:["node0", "node1", "node3", "node4", "node5"]}, {id:"node3", name:"node3 name", data:{$dim:19.78771599710248, "some other key":"some other value"}, adjacencies:["node0", "node1", "node2", "node4", "node5"]}, {id:"node4", name:"node4 name", data:{$dim:3.025781742947326, "some other key":"some other value"}, adjacencies:["node0", "node1", "node2", "node3", "node5"]}, {id:"node5", name:"node5 name", data:{$dim:9.654383829711456, "some other key":"some other value"}, adjacencies:["node0", "node1", "node2", "node3", "node4"]}, {id:"4619_46", adjacencies:["190_0"]}, {id:"236585_30", adjacencies:["190_0"]}, {id:"131161_18", adjacencies:["190_0"]}, {id:"41529_12", adjacencies:["190_0"]}]';
     //end
-    
+
     var infovis = document.getElementById('infovis');
     var w = infovis.offsetWidth - 50, h = infovis.offsetHeight - 50;
-    
+
     //init canvas
     //Create a new canvas instance.
     var canvas = new Canvas('mycanvas', {
@@ -439,7 +439,7 @@ function init(){
     //end
     var style = document.getElementById('mycanvas').style;
     style.marginLeft = style.marginTop = "25px";
-    
+
     //init Hypertree
     var ht = new Hypertree(canvas, {
         //Change node and Edge styles and colors.
@@ -447,12 +447,12 @@ function init(){
             dim: 9,
             color: "#f00"
         },
-        
+
         Edge: {
             lineWidth: 2,
             color: "#088"
         },
-    
+
         onBeforeCompute: function(node){
             Log.write("centering");
         },
@@ -483,7 +483,7 @@ function init(){
             var w = domElement.offsetWidth;
             style.left = (left - w / 2) + 'px';
         },
-        
+
         onAfterCompute: function(){
             Log.write("done");
         }
@@ -491,7 +491,7 @@ function init(){
 
     //load JSON data.
     ht.loadJSON(json);
-    
+
     //Add some edges to transform the
     //tree into a graph (just for fun).
     ht.graph.addAdjacence({
@@ -504,11 +504,11 @@ function init(){
     }, {
         'id': '4619_46'
     }, null);
-    
+
     //Compute positions and plot.
     ht.refresh();
     //end
-    
+
     //Global Options
     //Define a function that returns the selected duration
     function getDuration() {
@@ -530,7 +530,7 @@ function init(){
 
     //init handlers
     //Add event handlers to the right column controls.
-    
+
     //Remove Nodes
     var button = document.getElementById('remove-nodes');
     button.onclick = function() {
@@ -573,7 +573,7 @@ function init(){
     button = document.getElementById('sum');
     button.onclick = function(){
         //get graph to add.
-        var trueGraph = eval('(' + graph + ')');        
+        var trueGraph = eval('(' + graph + ')');
         //get animation type.
         var stype = document.getElementById('select-type-sum');
         var sindex = stype.selectedIndex;
@@ -594,7 +594,7 @@ function init(){
     button = document.getElementById('morph');
     button.onclick = function(){
         //get graph to morph to.
-        var trueGraph = eval('(' + graph + ')');        
+        var trueGraph = eval('(' + graph + ')');
         //get animation type.
         var stype = document.getElementById('select-type-morph');
         var sindex = stype.selectedIndex;

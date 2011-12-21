@@ -13,9 +13,9 @@
 {% block head_title %}{% blocktrans %}Your Photos{% endblocktrans %}{% endblock %}
 
 {% block body %}
-    
+
     <h1>{% trans "Photos from " %}{{ user.username }}</h1>
-    
+
     {% if photos %}
     {% autopaginate photos %}
         <div class="thumb-row clearfix">
@@ -32,6 +32,6 @@
     {% else %}
     <p>No photos were found.</p>
     {% endif %}
-    
-    
+
+
 {% endblock %}

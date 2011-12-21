@@ -25,8 +25,8 @@
     background-color: black;
 }
 
-#tags #left-container, 
-#tags #right-container, 
+#tags #left-container,
+#tags #right-container,
 #tags #center-container {
     height:600px;
     position:absolute;
@@ -48,7 +48,7 @@
     background-image:url('col2.png');
     background-position:center right;
     border-left:1px solid #ddd;
-    
+
 }
 
 #tags #right-container {

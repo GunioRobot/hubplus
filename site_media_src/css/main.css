@@ -502,7 +502,7 @@ th {
 	color			: #999;
 	font-size		: 0.625em;
 	line-height		: 1em;
-	vertical-align		: top; 
+	vertical-align		: top;
 }
 
 .tabbed ul.tabbed_navigation li.selected a .count {
@@ -649,7 +649,7 @@ th {
 .results .thumb {
 	position	: absolute;
 	left		: 0;
-	top			: 10px;	
+	top			: 10px;
 }
 
 .results h3,
@@ -731,7 +731,7 @@ th {
 }
 
 .message_headers dd {
-	float		: left;	
+	float		: left;
 	width		: 70%;
 }
 
@@ -1024,7 +1024,7 @@ list-style-position:inside;
 /* Side Blocks: Add */
 
 #feature_add {
-	margin-bottom	: 10px;	
+	margin-bottom	: 10px;
 }
 
 

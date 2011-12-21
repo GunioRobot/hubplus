@@ -10,7 +10,7 @@
     position:absolute;
     overflow:hidden;
     font-size:11px;
-    font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;    
+    font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
 }
 
 #infovis .content {
@@ -21,7 +21,7 @@
 #infovis .head {
     color:white;
     background-color:#444;
-    
+
 }
 
 #infovis .head.in-path {
@@ -42,7 +42,7 @@
 
 
 #infovis .over-leaf {
-    border:1px solid #9FD4FF; 
+    border:1px solid #9FD4FF;
 }
 
 #infovis .over-content {
@@ -65,7 +65,7 @@
     font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
     padding:7px;
 }
- 
+
 .album {
     width:100px;
     margin:3px;

@@ -25,14 +25,14 @@
 			  </p>
 		      </div>
 		    </li>
-		    
+
 		  </ul>
-		  
+
 		</fieldset>
 		<fieldset>
-		  
+
 		  <ul>
-		    
+
 		    <li>
 		      <div class="label">
 			<label><abbr class="required" title="required">* </abbr>{% trans "Add this to" %}</label>
@@ -43,7 +43,7 @@
 			    <div class="label_extended">
 			      <label><span id="group_display_name">{{group.display_name}}</span><a id="change_group" href="#">  – {% trans "Change group/Hub" %}</a></label>
 			      <input name="group" value="{{group.id}}" id="group_input" type="hidden" />
-			    </div> 
+			    </div>
 			  </li>
 			  <li id="auto_change_group" {% if can_add %}class="hidden"{% endif %}>
 			    <div class="label_extended">
@@ -54,14 +54,14 @@
 			</ul>
 		      </div>
 		    </li>
-		    
+
 		  </ul>
-		  
+
 		</fieldset>
 		<fieldset {% if can_add %}{% else %}class="hidden"{% endif %}>
-		  
+
 		  <ul>
-		    
+
 		    <li>
 		      <div class="label">
 			<label><abbr class="required" title="required">* </abbr>{% trans "Type of content" %}</label>
@@ -80,17 +80,17 @@
 			</ul>
 		      </div>
 		    </li>
-		    
+
 		  </ul>
-		  
+
 		</fieldset>
-		
+
 		<fieldset class="buttons">
-		  
+
 		  <input id="create_content" {% if can_add %}{% else %}disabled="disabled"{% endif %} class="{% if can_add %}{% else %}disabled {% endif %}submit button" type="Submit" value="{% trans 'Create' %}" />
-		  
+
 		</fieldset>
-		
+
 	</form>
 
 </div>

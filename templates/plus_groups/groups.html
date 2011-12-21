@@ -10,7 +10,7 @@
 
 {% block list_data %}
     {% for group in objects %}
-       <li {% if forloop.first %}class="first"{% endif %} {% if forloop.last %}class="last"{% endif %}> 
+       <li {% if forloop.first %}class="first"{% endif %} {% if forloop.last %}class="last"{% endif %}>
          {% show_group group %}
        </li>
     {% endfor %}

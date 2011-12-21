@@ -19,8 +19,8 @@
   <div id="content">
      {% autoescape off %}{{page.content}}{% endautoescape %}
   </div>
-  
-  <div id="content_extra">	
+
+  <div id="content_extra">
 <!--    <ul class="icon_text_button_set">
       <li><a class="icon_text_button bt_rss" href="#">RSS feed</a></li>
       <li><a class="icon_text_button bt_pdf" href="#">Download PDF</a></li>
@@ -31,23 +31,23 @@
 	{% trans "Created by" %} <a href="{% url profile_detail created_by.username %}">{{page.created_by}}</a>
 	{% trans "at" %} {{page.creation_time|time}} {% trans "on" %} {{page.creation_time|date}} {% trans "and last edited by" %} <a href="{% url profile_detail version.revision.user.username %}">{{version.revision.user}}</a> {{version.revision.date_created|timesince}} {% trans "ago" %}. </li>
       {% endif %}
-      <li>{% if page.copyright_holder %}Copyright {{page.copyright_holder}}, {% endif %}{% trans "Licensed under" %} {{page.license}}.</li>	
-    </ul> 
+      <li>{% if page.copyright_holder %}Copyright {{page.copyright_holder}}, {% endif %}{% trans "Licensed under" %} {{page.license}}.</li>
+    </ul>
   </div>
-  
+
 </div>
 <div id="section_tab_navigation" class="tabbed section yui-navset">
   <ul class="tabbed_navigation yui-nav">
     {% get_comment_count for page as comment_count %}
     <li class="selected"><a href="#comments"><span>{% trans "Comments" %}({{comment_count}})</span></a></li>
     <li><a href="#attachments"><span>{% trans "Attachments" %} ({{page.get_attachments.count}})</span></a></li>
-    <li><a href="#history"><span>{% trans "History" %} ({{version_list.count}} {% trans "revisions" %})</span></a></li>    
+    <li><a href="#history"><span>{% trans "History" %} ({{version_list.count}} {% trans "revisions" %})</span></a></li>
   </ul>
   <div class="tabbed_content yui-content">
     <div id="comments">
       {% include "plus_wiki/comments.html" %}
     </div>
-    <div id="attachments"> 
+    <div id="attachments">
         {% if page.get_attachments %}
 	      {% listing page.get_attachments 'THIS IS THE LABEL' 'ORDER' 'SEARCH TERMS' pages_listings_args %}
 	{% endif %}
@@ -69,14 +69,14 @@
 	      <input type="radio" class="radio second" name="second" {% ifequal forloop.counter 2 %}checked="checked"{% endifequal %} />
 	    </td>
 	    <td>
-	      <h4>{{ver.revision.comment}}</h4> 
+	      <h4>{{ver.revision.comment}}</h4>
 	      {% if ver.revision.user.user_name %}
 	      <span>{% trans "by" %} <a href="{% url profile_detail ver.revision.user.user_name %}">{{ver.revision.user.display_name}}</a></span> {% endif %}
 	      <span class="label_time">{% trans "on" %} {{ ver.revision.date_created|date }} {% trans "at" %} {{ver.revision.date_created|time}}</span>
 	    </td>
 	    <td>
 	      <div class="actions"><a class="view_old" href="{% url plus_groups:viewversion_WikiPage group_id page.name  %}">{% trans "View" %}</a> <!--| <a href="#">{% trans "Changes" %}</a>--> | <a href="{% url plus_groups:revert_WikiPage group_id page.name %}?ver_id={{ver.id}}">{% trans "Make current" %}</a></div>
-	    </td>  
+	    </td>
 	  </tr>
 	  {% endfor %}
 	  {% if comparable %}
@@ -92,7 +92,7 @@
 	<h2 id="ver_title"></h2>
 	<div id="ver_content">
 	</div>
-        <div>{% if ver_copyright_holder %}{% trans "Copyright" %} {{ver_copyright_holder}}{% endif %} {% trans "Licensed under" %}<a href="#" id="ver_license"></a>.</div>	
+        <div>{% if ver_copyright_holder %}{% trans "Copyright" %} {{ver_copyright_holder}}{% endif %} {% trans "Licensed under" %}<a href="#" id="ver_license"></a>.</div>
       </div>
     </div>
   </div>

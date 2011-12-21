@@ -1,4 +1,4 @@
-{% load i18n %} 
+{% load i18n %}
 
 {% load profile_tags %}
 
@@ -8,12 +8,12 @@
   <form class="page" method="post" action="#tabview=compose">
     <fieldset>
       <ul class="message_headers">
-	<li> 
+	<li>
 	  <dl>
 	    <dt><label for="message_recipient"><span class="required">*</span> {% trans 'To' %}</label></dt>
 	    <dd>
 	      <input id="id_recipient" type="hidden" name="recipient"/>
-	      
+
 	      {% if prefill %}
 	          {% autocomplete_user_form recipient_str %}
 	      {% else %}
@@ -45,7 +45,7 @@
       <input type="submit" value="{% trans 'Send' %}" class="button"/>
     </fieldset>
   </form>
-  
+
 </div>
 
 

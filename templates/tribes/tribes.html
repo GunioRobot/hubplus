@@ -12,7 +12,7 @@
 
 {% block body %}
     <h1>{% trans "Tribes" %}</h1>
-    
+
     <p>{% trans "A <b>tribe</b> is a group of people with some common interest." %}</p>
     {% if user.is_authenticated %}
         <div class="form-toggle">
@@ -33,7 +33,7 @@
         {% url acct_login as login_url %}
         <p>{% blocktrans %}<a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">log in </a> to create your own tribe or join an existing one.{% endblocktrans %}</p>
     {% endif %}
-    
+
     <form method="GET" action="">
         <input type="text" name="search" value="{{ search_terms }}" />
         <input type="submit" value="Search" />
@@ -88,7 +88,7 @@
         </dl>
         {% paginate %}
     {% endif %}
-    
+
 {% endblock %}
 
 {% block extra_body %}

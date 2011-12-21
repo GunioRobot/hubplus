@@ -1,11 +1,11 @@
 
 function Transform(from_low,from_hi,to_low,to_hi,to_step) {
     f = function(x) {
-	val = (x/(from_hi-from_low))*(to_hi-to_low);	
+	val = (x/(from_hi-from_low))*(to_hi-to_low);
 	return val;
     }
     f.rev = function(x) {
-	val = (x/(to_hi-to_low))*(from_hi-from_low);	
+	val = (x/(to_hi-to_low))*(from_hi-from_low);
 	return val;
     }
     return f;
@@ -33,7 +33,7 @@ function test_buffer(ut) {
     ut.assertEquals('buffer3','ab',buffer._());
     ut.assertEquals('buffer4','abc',buffer._('c'));
 }
- 			 
+
 function test_higher_order(ut) {
     var xs=[1,2,3];
     ut.assertEqualArrays('ho1',[2,4,6],map(function(x){return x*2;},xs));
@@ -62,7 +62,7 @@ function test_copy_dict(ut) {
     ut.assertEquals('copy_dict2',2,d2.b);
     ut.assertEquals('copy_dict3',undefined,d2['c']);
 }
-    
+
 
 function test_slider(ut) {
     options = [['all',1,1],['members',1,2],['group',1,3],['me',2,1]];
@@ -78,13 +78,13 @@ function test_slider(ut) {
 
     sm.set_current(-1);
     ut.assertEquals(6,0,sm.get_current());
-    
+
     sm2 = SliderModel(4334,2,2);
     ut.assertEquals(7,2,sm2.get_current());
     sm2.set_current(3);
     ut.assertEquals(8,3,sm2.get_current());
 
-    sm2.set_current(1);    
+    sm2.set_current(1);
     ut.assertEquals(9,2,sm2.get_current());
 
     sm2.set_min(1);
@@ -126,7 +126,7 @@ function test_slider_group(ut,element){
     ut.assertEquals(110,3,sg.get_width());
     ut.assertEquals(111,4,sg.get_length());
 
-    ut.assertEquals(115,3,sg.sliders.length);    
+    ut.assertEquals(115,3,sg.sliders.length);
     ut.assertEquals(120,2,sg.constraints.length);
     ut.assertEquals(121,3,sg.interface_ids.length);
 
@@ -140,7 +140,7 @@ function test_slider_group(ut,element){
 
     sm2 = sg.sliders[1];
     ut.assertEquals(150,sm2,sm.get_observers()[1]);
-    
+
     to = test_observer(sm);
     sm.add_observer(to);
     ut.assertEquals(155,4,sm.get_observers().length);
@@ -148,7 +148,7 @@ function test_slider_group(ut,element){
     sm.set_current(2);
 
     ut.assertTrue(160,to.flag);
-    
+
     ut.assertEquals(170,2,sm2.min);
 
     sm.set_current(3);
@@ -156,9 +156,9 @@ function test_slider_group(ut,element){
 
     html = sg.sliders_as_html('test_id',function(a,b,c) {});
 
- 
+
     ut.assertEqualArrays(200,['read','write','execute'],sg.titles);
-  
+
     ut.assertEqualArrays(210,[1,1,1,2],sg.option_types);
     ut.assertEqualArrays(220,[1,2,3,1],sg.option_ids);
     ut.assertEquals(300,3,sg.get_current_option_id(0));
@@ -178,7 +178,7 @@ function test_slider_group(ut,element){
     //	'write':{},
     //	'execute':{}
     // },sg.status_json());
-    
+
     ut.report();
 
 }

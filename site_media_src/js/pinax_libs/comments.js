@@ -4,7 +4,7 @@
 
 function show_reply_form(comment_id, url, person_name) {
 
-    // careful, next depends on structure of url given to us, 
+    // careful, next depends on structure of url given to us,
     // we expect /comments/freecomment/CONTENT_TYPE/CONTENT_ID/FREECOMMENT_ID/
     xs = url.split('/');
     content_type_id = xs[3];
@@ -13,18 +13,18 @@ function show_reply_form(comment_id, url, person_name) {
     tail = [content_type_id, content_id, real_comment_id].join('/');
     var comment_reply = jq('#' + comment_id);
     var to_add = "";
-    jq.get('/plus_comments/our_comment/'+tail+'/', 
+    jq.get('/plus_comments/our_comment/'+tail+'/',
 	   function (data, textStatus) {
 	       to_add = jq(data);
 	       to_add.css("display", "none");
 	       comment_reply.after(to_add);
 	       to_add.slideDown(function() {
-		       comment_reply.replaceWith(new Array('<a id="', 
+		       comment_reply.replaceWith(new Array('<a id="',
 						comment_id,'" href="javascript:hide_reply_form(\'',
 						comment_id, '\',\'', url, '\',\'', person_name,
 						'\')">Cancel</a>').join(''));
-		   }); 
-	  
+		   });
+
 	   });
 }
 
@@ -34,7 +34,7 @@ function hide_reply_form(comment_id, url, person_name) {
     comment_reply.next().slideUp(function (){
 	    comment_reply.next('.response').remove();
 	    comment_reply.replaceWith(new Array('<a id="',
-						comment_id,'" href="javascript:show_reply_form(\'', 
+						comment_id,'" href="javascript:show_reply_form(\'',
 						comment_id, '\',\'', url, '\',\'', person_name,
 						'\')">Reply</a>').join(''));
 	});

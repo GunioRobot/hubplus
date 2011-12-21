@@ -57,14 +57,14 @@ YAHOO.extend(YAHOO.example.DDList, YAHOO.util.DDProxy, {
 
         // Show the proxy element and animate it to the src element's location
         Dom.setStyle(proxy, "visibility", "");
-        var a = new YAHOO.util.Motion( 
-            proxy, { 
-                points: { 
+        var a = new YAHOO.util.Motion(
+            proxy, {
+                points: {
                     to: Dom.getXY(srcEl)
                 }
-            }, 
-            0.2, 
-            YAHOO.util.Easing.easeOut 
+            },
+            0.2,
+            YAHOO.util.Easing.easeOut
         )
         var proxyid = proxy.id;
         var thisid = this.id;
@@ -84,10 +84,10 @@ YAHOO.extend(YAHOO.example.DDList, YAHOO.util.DDProxy, {
         if (DDM.interactionInfo.drop.length === 1) {
 
             // The position of the cursor at the time of the drop (YAHOO.util.Point)
-            var pt = DDM.interactionInfo.point; 
+            var pt = DDM.interactionInfo.point;
 
             // The region occupied by the source element at the time of the drop
-            var region = DDM.interactionInfo.sourceRegion; 
+            var region = DDM.interactionInfo.sourceRegion;
 
             // Check to see if we are over the source element's location.  We will
             // append to the bottom of the list once we are sure it was a drop in
@@ -116,7 +116,7 @@ YAHOO.extend(YAHOO.example.DDList, YAHOO.util.DDProxy, {
 
         this.lastY = y;
     },
-    onDragOver: function(e, id) {    
+    onDragOver: function(e, id) {
         var srcEl = this.getEl();
         var destEl = Dom.get(id);
         // We are only concerned with tr items, we ignore the dragover

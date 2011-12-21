@@ -7,11 +7,11 @@
 
 {% block body %}
     <h1>{% blocktrans %}Followers of {{ other_user }}{% endblocktrans %}</h1>
-    
+
     {% url profile_detail other_user.username as other_user_url %}
-    
+
     <p>{% blocktrans %}Followers of <a href="{{ other_user_url }}">{{ other_user }}</a>'s tweets:{% endblocktrans %}</p>
-    
+
     {% if follow_list %}
         {% for following_user in follow_list %}
             {# @@@ this is common code from all profiles list -- refactor #}
@@ -24,7 +24,7 @@
     {% else %}
         <p>{% trans 'No followers.' %}</p>
     {% endif %}
-    
+
     {% url tweet_following other_user.username as tweet_following_url %}
     <p>{% blocktrans %}Also see <a href="{{ tweet_following_url }}">who {{ other_user }} is following</a>.{% endblocktrans %}
 {% endblock %}

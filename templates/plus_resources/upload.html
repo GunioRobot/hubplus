@@ -13,7 +13,7 @@
 	{% if errors.title %}<span class="error">{{errors.title}}<span>{% endif %}
 {% endblock %}
 
-          
+
 {% block body %}
 <div id="main_title" class="block wiki_edit">
 
@@ -76,7 +76,7 @@
 					<input  id="author" name="author" class="text" type="text" value='{% if data.author %}{{data.author}}{% else %}{{upload.author}}{% endif %}'/>
 					{% if errors.author %}<span class="error">{{errors.author}}</span>{% endif %}
 					<p>Please note that the author field is currently restricted to 100 characters.
-					  If you would like to add a citation to an academic journal, please use 
+					  If you would like to add a citation to an academic journal, please use
 					  the description field.
 					</p>
 				</div>
@@ -97,18 +97,18 @@
 
 	<fieldset class="buttons">
 
-	  {% if upload.stub %}     
+	  {% if upload.stub %}
 	  <input class="button" id="edit_submit"  type="submit" value="Create"/>
 	  or <a href="{% url plus_groups:deletestub_Resource upload.in_agent.obj.id upload.name  %}">Go back</a>
 	  {% else %}
 	  <input class="button" id="edit_submit"  type="submit" value="Save"/>
 	  or  <a href="{% url plus_groups:view_Resource upload.in_agent.obj.id upload.name  %}">Cancel</a>
 	  {% endif %}
-	  
+
 	</fieldset>
 
 {% include "plus_groups/resource_common_edit_options.html" %}
-	
+
 </div>
 {% endblock %}
 

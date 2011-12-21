@@ -18,7 +18,7 @@
       </li>
     {% endfor %}
       {% if tree %}</ul>{% endif %}
-    
+
     {% if can_comment %}
     <h3>{% trans "Comment on this"%} {{target_type}}</h3>
     <div class="thumb small">
@@ -38,12 +38,12 @@
         <li>
           <textarea id="id_comment" name="comment" cols="40" rows="10"></textarea>
         </li>
-	
+
         <li><input class="button" type="submit" value="Post comment" /></li>
       </ul>
     </form>
     {% else %}
         {% trans "You don't have permission to comment here" %}
     {% endif %}
-    
+
 </div>

@@ -18,7 +18,7 @@
 	<ul id="members_list">
 	  {% for contributor in contributors %}
 	  {% if contributor.username %}
-	  <li><a href="{% url profile_detail contributor.username %}" 
+	  <li><a href="{% url profile_detail contributor.username %}"
 		 class="thumb small">{% avatar contributor.obj 40 %}
 	      {% if contributor.display_name %}{{contributor.display_name}}{% else %}{{contributor.username}}{%endif%}</a>
 	  </li>
@@ -30,7 +30,7 @@
     </ul>
   </div>
   <h3>{% trans "My Tags" %}</h3>
-  
+
   <div>
     {% plus_tag 'Tags' 'tag' page.obj user %}
   </div>
@@ -46,7 +46,7 @@
     <li class="first"><a href="#">{% trans "Follow this page" %}</a></li>
     <li class="last"><a href="#">{% trans "Recommend" %}</a></li>
   </ul>
-  
+
 </div>
 -->
 {% include "plus_explore/side_search.html" %}

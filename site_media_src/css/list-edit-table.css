@@ -1,4 +1,4 @@
-table.draglist { 
+table.draglist {
     position: relative;
     border-spacing: 10px;
     border-collapse: separate;
@@ -12,7 +12,7 @@ table.draglist {
 }
 table.draglist tr {
     margin: 1px;
-    cursor: move; 
+    cursor: move;
     background-color: #F4F4F4;
     border: 2px solid #560005;
     height: 30px;
@@ -23,9 +23,9 @@ table.draglist td.add_remove {
 table.draglist tr a {
     color: #660007;
 }
-table.draglist_alt { 
+table.draglist_alt {
     position: relative;
-    width: 200px; 
+    width: 200px;
     list-style: none;
     margin:0;
     padding:0;
@@ -33,10 +33,10 @@ table.draglist_alt {
 }
 table.draglist_alt tr {
     margin: 1px;
-    cursor: move; 
+    cursor: move;
 }
-#user_actions { 
-	float: right; 
+#user_actions {
+	float: right;
 }
 div.logger{
 	position:absolute;
@@ -45,7 +45,7 @@ div.edit_list {
         float: left;
 }
 div.edit_list a {
-       color: #660007; 
+       color: #660007;
 }
 div#edit_list_left {
        height: 10px;

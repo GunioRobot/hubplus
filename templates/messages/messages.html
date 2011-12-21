@@ -1,6 +1,6 @@
 {% extends "site_base.html" %}
 
-{% load i18n %} 
+{% load i18n %}
 {% load timezone_filters %}
 
 {% block page_title %}{% trans "Messages" %}{% endblock %}
@@ -28,7 +28,7 @@
 	<p>{% blocktrans %} Share {{ SITE_NAME }} with your friends and colleagues.{% endblocktrans %}</p>
 	<a class="button" href="{% invite_url None %}">{% trans "Invite" %}</a>
 </div> -->
- 
+
 <!--<div id="feature_email_settings" class="block">
     <h3>Email Notifications</h3>
 	<ul class="link_list">

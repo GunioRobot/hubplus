@@ -1,7 +1,7 @@
 var Log = {
     elem: false,
     write: function(text){
-        if (!this.elem) 
+        if (!this.elem)
             this.elem = document.getElementById('log');
         this.elem.innerHTML = text;
         this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
@@ -85,7 +85,7 @@ function init() {
                         '$color': '#55f'
                     },
                     'children': []
-                    
+
                 },
                 {
                     'id':'pie101',
@@ -95,7 +95,7 @@ function init() {
                         '$color': '#66f'
                     },
                     'children': []
-                    
+
                 },
                 {
                     'id':'pie102',
@@ -105,7 +105,7 @@ function init() {
                         '$color': '#77f'
                     },
                     'children': []
-                    
+
                 }
             ]
         },
@@ -125,7 +125,7 @@ function init() {
                         '$color': '#88f'
                     },
                     'children': []
-                    
+
                 },
                 {
                     'id':'pie201',
@@ -135,7 +135,7 @@ function init() {
                         '$color': '#99f'
                     },
                     'children': []
-                    
+
                 }
             ]
         },
@@ -155,7 +155,7 @@ function init() {
                         '$color': '#aaf'
                     },
                     'children': []
-                    
+
                 }
             ]
         }
@@ -309,10 +309,10 @@ function init() {
       ]
     };
     //end
-    
+
     var infovis = document.getElementById('infovis');
     var w = infovis.offsetWidth, h = infovis.offsetHeight;
-    
+
     //create some containers for the visualizations
     var container = document.createElement('div');
     container.id = "infovis1";
@@ -323,7 +323,7 @@ function init() {
     style.height = Math.floor(h / 2) + "px";
     style.position = 'absolute';
     infovis.appendChild(container);
-    
+
     container = document.createElement('div');
     container.id = "infovis2";
     var style = container.style;
@@ -343,7 +343,7 @@ function init() {
     style.height = Math.floor(h / 2) + "px";
     style.position = 'absolute';
     infovis.appendChild(container);
-    
+
     //init canvas
     //Create new canvas instances.
     var canvas1 = new Canvas('mycanvas1', {
@@ -394,20 +394,20 @@ function init() {
             var ldist = this.config.levelDistance;
             var span = node.angleSpan, begin = span.begin, end = span.end;
             var polarNode = node.pos.getp(true);
-            
+
             var polar = new Polar(polarNode.rho, begin);
             var p1coord = polar.getc(true);
-            
+
             polar.theta = end;
             var p2coord = polar.getc(true);
-            
+
             polar.rho += ldist;
             var p3coord = polar.getc(true);
-            
+
             polar.theta = begin;
             var p4coord = polar.getc(true);
-            
-            
+
+
             var ctx = canvas.getCtx();
             ctx.beginPath();
             ctx.moveTo(p1coord.x, p1coord.y);
@@ -419,12 +419,12 @@ function init() {
             ctx.lineTo(p3coord.x, p3coord.y);
             ctx.moveTo(0, 0);
             ctx.arc(0, 0, polarNode.rho + ldist, end, begin, true);
-            
+
             ctx.fill();
         }
     });
     //end
-    
+
     //init rgraph
     //This RGraph is used to plot the upper-left pie chart.
     //It has custom *pie-chart-nodes*.
@@ -441,11 +441,11 @@ function init() {
         },
         //Parent-children distance
         levelDistance: 135,
-        
+
         //Add styles to node labels on label creation
         onCreateLabel: function(domElement, node){
             domElement.innerHTML = node.name;
-            if(node.data.$aw) 
+            if(node.data.$aw)
                 domElement.innerHTML += " " + node.data.$aw + "%";
             var style = domElement.style;
             style.fontSize = "0.8em";
@@ -479,7 +479,7 @@ function init() {
         },
         //Parent-children distance
         levelDistance: 45,
-        
+
         //Add styles to node labels on label creation
         onCreateLabel: function(domElement, node){
             if(node.id == rgraph2.root) return;
@@ -491,7 +491,7 @@ function init() {
             style.fontSize = "0.8em";
             style.color = "#fff";
         },
-        
+
         onPlaceLabel: function(domElement, node){
             var style = domElement.style;
             var left = parseInt(style.left);
@@ -523,24 +523,24 @@ function init() {
             color: '#aaa',
             align: 'right'
         },
-        
+
         Edge: {
             type: 'bezier',
             color: '#444'
         },
-        
+
         //This method is called on DOM label creation.
         //Use this method to add styles to
         //your node label.
         onCreateLabel: function(label, node){
-            label.id = node.id;            
+            label.id = node.id;
             label.innerHTML = node.name;
             //set label styles
             var style = label.style;
             style.fontSize = '0.7em';
             style.textAlign= 'center';
             style.paddingTop = '3px';
-            style.height = node.data.$height + 'px';            
+            style.height = node.data.$height + 'px';
 
             if(node.id == st.root) {
                 style.color = '#eee';

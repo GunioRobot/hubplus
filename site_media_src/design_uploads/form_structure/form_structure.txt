@@ -12,7 +12,7 @@ form.full_block
 -	fieldset
 	-	ul
 		-	INPUT (see below)
-			
+
 -	fieldset.buttons
 	-	input.submit.button
 	-	abbr.terms (optional, for asterisk)

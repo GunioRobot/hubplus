@@ -22,7 +22,7 @@ function SliderModel(id, init, min) {
 
     o.set_min = function(min) {
 	this.min = min;
-	if (this.current < this.min) { 
+	if (this.current < this.min) {
 	    this.set_current(this.min);
 	}
 	this.changed();
@@ -38,7 +38,7 @@ function SliderModel(id, init, min) {
 	this.changed();
     }
 
-    o.get_observers = function() { 
+    o.get_observers = function() {
         return this.observers;
     }
 
@@ -56,7 +56,7 @@ function SliderModel(id, init, min) {
 	    this.Yahoo_slider.model_changed();
 	}
     }
-    
+
     o.callback = function(other) {
 	this.set_min(other.get_current());
     }
@@ -118,8 +118,8 @@ function SliderGroup(json) {
     copy_dict(['title','intro','option_labels','option_types','option_ids','interface_ids','resource_id','resource_type'],
 	      json,o);
     o.titles = json['sliders'];
-    
-    o.sliders = [];    
+
+    o.sliders = [];
     for (var i=0;i<json['sliders'].length;i++) {
 	s=SliderModel(i,json['current'][i],json['mins'][i]);
 	s.add_observer(o);
@@ -130,7 +130,7 @@ function SliderGroup(json) {
     for (var i=0;i<o.constraints.length;i++) {
         c = o.constraints[i];
 	o.sliders[c[0]].add_observer(o.sliders[c[1]]);
-    }    
+    }
 
     o.Yahoo_sliders=[];
 
@@ -182,13 +182,13 @@ function SliderGroup(json) {
         join=joiner('');
 	header = h2(this.title);
 	intro = p(this.intro);
-       
+
 	var th =function(x) { return "<th class='attribute_column'>"+x+"</th>"; }
 	titles = "<th class='group_column'>Group</th>"+join(map(th,this.titles));
 
-	
-	if (this.sliders.length == 0) { 
-	    t = table(tr(titles)); 
+
+	if (this.sliders.length == 0) {
+	    t = table(tr(titles));
 	} else {
 	    b=[];
 	    for (var i=0;i<this.option_labels.length;i++) {
@@ -205,7 +205,7 @@ function SliderGroup(json) {
     o.update_slider_ticks = function(table_id) {
 	var table_height=$('#'+table_id).height();
 	var thumb,height,step;
-       
+
 	for (var i=0;i<this.Yahoo_sliders.length;i++) {
 	    slider = this.Yahoo_sliders[i];
 	    thumb = slider.getThumb();
@@ -214,8 +214,8 @@ function SliderGroup(json) {
 	    thumb.setYConstraint(0,height,step);
 	}
     }
-    
-   
+
+
     o.get_current_option_id = function(idx) {
 	c = this.sliders[idx];
 	return c.get_current();
@@ -274,17 +274,17 @@ function Buffer() {
 	    b=b+this.list[i];
 	}
 	return b;
-    }   
+    }
     return o;
 }
 
 function Transform(from_low, from_hi, to_low, to_hi) {
     f = function(x) {
-	val = (x/(from_hi-from_low))*(to_hi-to_low);	
+	val = (x/(from_hi-from_low))*(to_hi-to_low);
 	return val;
     }
     f.rev = function(x) {
-	val = (x/(to_hi-to_low))*(from_hi-from_low);	
+	val = (x/(to_hi-to_low))*(from_hi-from_low);
 	return val;
     }
     return f;

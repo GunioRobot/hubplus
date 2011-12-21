@@ -1,7 +1,7 @@
 var Log = {
     elem: false,
     write: function(text){
-        if (!this.elem) 
+        if (!this.elem)
             this.elem = document.getElementById('log');
         this.elem.innerHTML = text;
         this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
@@ -245,25 +245,25 @@ function init(){
             'transform': false,
             color: "#f00"
         },
-        
+
         Edge: {
             overridable: true,
             color: "#088"
         },
-        
+
         //Change the animation transition type
         transition: Trans.Back.easeOut,
         duration:1000,
-        
+
         //This method is called right before plotting an
         //edge. This method is useful for adding individual
         //styles to edges.
         onBeforePlotLine: function(adj){
             //Set random lineWidth for edges.
-            if (!adj.data.$lineWidth) 
+            if (!adj.data.$lineWidth)
                 adj.data.$lineWidth = Math.random() * 5 + 1;
         },
-        
+
         onBeforeCompute: function(node){
             Log.write("centering");
         },
@@ -275,7 +275,7 @@ function init(){
                 ht.onClick(node.id, { hideLabels: false });
             };
         },
-        
+
         //This method is called when moving/placing a label.
         //You can add some positioning offsets to the labels here.
         onPlaceLabel: function(domElement, node){
@@ -284,7 +284,7 @@ function init(){
             intX -= width / 2;
             domElement.style.left = intX + 'px';
         },
-        
+
         onAfterCompute: function(){
             Log.write("done");
 

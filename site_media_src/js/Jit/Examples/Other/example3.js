@@ -1,7 +1,7 @@
 var Log = {
     elem: false,
     write: function(text){
-        if (!this.elem) 
+        if (!this.elem)
             this.elem = document.getElementById('log');
         this.elem.innerHTML = text;
         this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
@@ -39,7 +39,7 @@ function init() {
                         '$color': '#55f'
                     },
                     'children': []
-                    
+
                 },
                 {
                     'id':'pie101',
@@ -49,7 +49,7 @@ function init() {
                         '$color': '#66f'
                     },
                     'children': []
-                    
+
                 },
                 {
                     'id':'pie102',
@@ -59,7 +59,7 @@ function init() {
                         '$color': '#77f'
                     },
                     'children': []
-                    
+
                 }
             ]
         },
@@ -79,7 +79,7 @@ function init() {
                         '$color': '#88f'
                     },
                     'children': []
-                    
+
                 },
                 {
                     'id':'pie201',
@@ -89,7 +89,7 @@ function init() {
                         '$color': '#99f'
                     },
                     'children': []
-                    
+
                 }
             ]
         },
@@ -109,7 +109,7 @@ function init() {
                         '$color': '#aaf'
                     },
                     'children': []
-                    
+
                 }
             ]
         }
@@ -161,10 +161,10 @@ function init() {
       ]
     };
     //end
-    
+
     var infovis = document.getElementById('infovis');
     var w = infovis.offsetWidth, h = infovis.offsetHeight;
-    
+
     //init canvas
     //Create a new canvas instance.
     var canvas = new Canvas('mycanvas', {
@@ -184,20 +184,20 @@ function init() {
             var ldist = this.config.levelDistance;
             var span = node.angleSpan, begin = span.begin, end = span.end;
             var polarNode = node.pos.getp(true);
-            
+
             var polar = new Polar(polarNode.rho, begin);
             var p1coord = polar.getc(true);
-            
+
             polar.theta = end;
             var p2coord = polar.getc(true);
-            
+
             polar.rho += ldist;
             var p3coord = polar.getc(true);
-            
+
             polar.theta = begin;
             var p4coord = polar.getc(true);
-            
-            
+
+
             var ctx = canvas.getCtx();
             ctx.beginPath();
             ctx.moveTo(p1coord.x, p1coord.y);
@@ -209,11 +209,11 @@ function init() {
             ctx.lineTo(p3coord.x, p3coord.y);
             ctx.moveTo(0, 0);
             ctx.arc(0, 0, polarNode.rho + ldist, end, begin, true);
-            
+
             ctx.fill();
         }
     });
-    
+
     ST.Plot.NodeTypes.implement({
         //Create a new node type that renders an entire RGraph visualization
         'piechart': function(node, canvas, animating) {
@@ -225,7 +225,7 @@ function init() {
         }
     });
     //end
-    
+
     //init pie
     var pie = new RGraph(canvas, {
         //Add node/edge styles and set
@@ -284,7 +284,7 @@ function init() {
                     Move: {
                         offsetY: -90
                     }
-                });  
+                });
             };
         }
     });

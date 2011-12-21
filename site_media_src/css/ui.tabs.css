@@ -15,7 +15,7 @@
 	background: #fff;
 	border: 1px solid black;
 	border-width: 1px 1px 0;
-    white-space: nowrap; /* required in IE 6 */    
+    white-space: nowrap; /* required in IE 6 */
 }
 .ui-tabs .ui-tabs-nav li a span { display: block; padding: 0 10px 2px;}
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 1px; border-bottom-width: 0;}

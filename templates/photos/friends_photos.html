@@ -13,9 +13,9 @@
 {% block head_title %}{% blocktrans %}Friends' Photos{% endblocktrans %}{% endblock %}
 
 {% block body %}
-    
+
     <h1>{% blocktrans %}Friends' Photos{% endblocktrans %}</h1>
-    
+
     {% if object_list %}
         {% autopaginate object_list 24 %}
         <div class="thumb-row clearfix">
@@ -32,5 +32,5 @@
     {% else %}
         <p>No photos were found.</p>
     {% endif %}
-    
+
 {% endblock %}

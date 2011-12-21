@@ -52,7 +52,7 @@ jQuery.fn.confirm = function(options) {
         target._handlers.push(events[type][i]);
       }
     }
-    
+
     // Create ok button, and bind in to a click handler.
     var $ok = jQuery(options.buttons.wrapper)
       .append(options.buttons.ok)

@@ -9,18 +9,18 @@
 
 {% block body %}
     <h1>{% trans "Discussion Topics for Tribe" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h1>
-    
+
     {% autopaginate tribe.topics.all %}
-    
+
     {% for topic in tribe.topics.all %}
         {% show_tribe_topic topic %}
     {% endfor %}
-    
+
     {% paginate %}
-    
+
     {% if are_member %}
         <h2>{% trans "New Topic" %}</h2>
-        
+
         <form class="uniForm" id="tribe_form" method="POST" action="">
             <fieldset class="inlineLabels">
                 {{ topic_form|as_uni_form }}
@@ -31,5 +31,5 @@
             </fieldset>
         </form>
     {% endif %}
-    
+
 {% endblock %}

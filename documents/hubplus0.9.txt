@@ -5,7 +5,7 @@ User  *Tom*
       *Phil*
       - follow
       - status
-      - message        
+      - message
       - hostinfo
       - Regions
       - links
@@ -13,7 +13,7 @@ User  *Tom*
 
 
 Phil please (tom's wishlist):
-- apply wiki naming to group name.	
+- apply wiki naming to group name.
 - begin work on uploads - happy to help, particularly around the image previews etc
 
 
@@ -41,7 +41,7 @@ Tags *Tom*
       - you should only see the add tag form if you have permission on the tagger_for user. Same for delete.
 
 Phil - host info security setup
-     - ordering of lists, members, hosts (group page) and groups (profile page) 
+     - ordering of lists, members, hosts (group page) and groups (profile page)
 
 
 Attribute Editing - Phil
@@ -52,7 +52,7 @@ Attribute Editing - Phil
 
 hubspace
 --------
-rename member level hub groups from "group members" to "group" 
+rename member level hub groups from "group members" to "group"
 
 misc
 ----
@@ -70,11 +70,11 @@ Permissions
   Users and Profiles.
      - Profile acquire their SecurityContext from Users
      - We don't *customize* Profile security, in the sense of creating a specific Profile SecurityContext, we just edit the User
-     	
+
 
   Further Changes
      - we need to distinguish whether its possible to "customized permmisions" (add new security context for this object) -- one child (child types - single or multiple)
-     - uncustomised view 
+     - uncustomised view
      - put a "broad type" (permission_prototype) on security agents which can be used to store the "public" / "private" / "invited" et. distintion
      - restrict tabs showing sliders, according to ManagePermissions interface
      - labels on the sliders ... (use the _ functions )
@@ -110,11 +110,11 @@ Monday 25th - 1st September
 - Phil MHPSS imports
 - Tom - js browser issues
 - Tom + Shekhar - hubspace integration
- 
+
 
 Tuesday 1st September
 ---------------------
-Begin Testing! With Hosts and MHPSS. Data not stored 
+Begin Testing! With Hosts and MHPSS. Data not stored
 
 1st - 15th
 ----------
@@ -139,7 +139,7 @@ Groups
 ------
 HP - 0.9
 
-Join/Leave/Invite/Apply to Join/Set Status/Edit Home Page, interfaces with permissions control 
+Join/Leave/Invite/Apply to Join/Set Status/Edit Home Page, interfaces with permissions control
 Sign up Process
 Inplace Fields / Attributes
 tag group as "about ..."
@@ -152,7 +152,7 @@ Host Group (default to only visible to its members)
 Hubs
 ----
 Create Hub object (members group with associated location)
-Bring in Location Data for Hub 
+Bring in Location Data for Hub
 
 
 Invoicing - HP 0.9/1.0
@@ -167,16 +167,16 @@ HP 0.9
 - look at django-tagging
 - fix existing tagging
 - tag refinements search ... urls: ${}/tag/sustainability+renewable_energy  '+' is AND  and _ is "separator"
-  - maintain table of tag relations with intersection counts - map this by the amount of objects actually accessible. 
+  - maintain table of tag relations with intersection counts - map this by the amount of objects actually accessible.
 - tag tweets, pages, events
 - only see the tagged items you have permission to
-- your feed / group feed - customise with multiple searches, tags of the users and groups you are following. 
+- your feed / group feed - customise with multiple searches, tags of the users and groups you are following.
 - Filter feed by tags, "user as group"? (author), title, fulltext (keyword),  - Order by date, author, title. Save filter + sorting combination
 - field search/filter - attribute:value
 - fulltext search/filter - http://code.google.com/p/django-solr-search/  OR http://github.com/dcramer/django-sphinx/ http://haystacksearch.org/docs/
 
 http://pypi.python.org/pypi/pdfminer/ - get text from pdf docs - EASY
-http://www.unixuser.org/~euske/python/pdfminer/index.html 
+http://www.unixuser.org/~euske/python/pdfminer/index.html
 http://wiki.services.openoffice.org/wiki/PyUNO_bridge + openoffice - to extract word docs - HARD
 
 
@@ -213,7 +213,7 @@ include hubspace notes
 Speed up pinax HP 0.9
 --------------
 concat js and serve as gzipped  http://www.ohloh.net/p/django-compress ?
-use lightty for static files 
+use lightty for static files
 django-mptt
 
 Financial + User data export HP 0.9

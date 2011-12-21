@@ -4,5 +4,5 @@ function inspect_fields(x) {
     for (var i in x) {
 	b=b+', '+i;
     }
-    return b;  
+    return b;
 }

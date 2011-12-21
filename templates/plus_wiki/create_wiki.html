@@ -12,8 +12,8 @@
 	{% if errors.title %}<div class="error_message">{{errors.title}}</div>{% endif %}
 {% endblock %}
 
-{% block body %}      
-<div id="main_title" class="block wiki_edit">      
+{% block body %}
+<div id="main_title" class="block wiki_edit">
 
 	<ul class="icon_text_button_set">
 		{% if permissions %}<li><a class="icon_text_button bt_permissions" href="#" rel="#overlay" id="{{page.edit_key}}permissionedit">{% trans "Permissions" %}</a></li>{% endif %}
@@ -61,10 +61,10 @@
 			    {% if errors.license %}<span class="error">{{errors.license}}</span>{% endif %}
 			  </div>
 			</li>
-			
+
 			{% if page.stub %}
 			{% else %}
-			<li class="changes_set">	
+			<li class="changes_set">
 				<div class="label">
 					<label for="what_changed">What's changed? <span class="extra">describe what you've just changed</span></label>
 				</div>
@@ -82,7 +82,7 @@
     <fieldset class="buttons">
 
 		{% if page.stub %}
-		<input class="submit button" id="preview" name="preview"  type="submit" value="Preview"/>      
+		<input class="submit button" id="preview" name="preview"  type="submit" value="Preview"/>
 		<input class="button" id="edit_submit"  type="submit" value="Create"/>
 		or <a href="{% url plus_groups:deletestub_WikiPage page.in_agent.obj.id page.name  %}">Go back</a>
 		{% else %}
@@ -94,10 +94,10 @@
     </fieldset>
 
 {% include "plus_groups/resource_common_edit_options.html" %}
-    
+
 </div>
 {% endblock %}
-   
+
  {% block side_bar %}
     {% if page.stub %}
     {% else %}

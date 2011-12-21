@@ -1,7 +1,7 @@
 var Log = {
     elem: false,
     write: function(text){
-        if (!this.elem) 
+        if (!this.elem)
             this.elem = document.getElementById('log');
         this.elem.innerHTML = text;
         this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
@@ -39,7 +39,7 @@ function init() {
                         '$color': '#55f'
                     },
                     'children': []
-                    
+
                 },
                 {
                     'id':'pie101',
@@ -49,7 +49,7 @@ function init() {
                         '$color': '#66f'
                     },
                     'children': []
-                    
+
                 },
                 {
                     'id':'pie102',
@@ -59,7 +59,7 @@ function init() {
                         '$color': '#77f'
                     },
                     'children': []
-                    
+
                 }
             ]
         },
@@ -79,7 +79,7 @@ function init() {
                         '$color': '#88f'
                     },
                     'children': []
-                    
+
                 },
                 {
                     'id':'pie201',
@@ -89,7 +89,7 @@ function init() {
                         '$color': '#99f'
                     },
                     'children': []
-                    
+
                 }
             ]
         },
@@ -109,7 +109,7 @@ function init() {
                         '$color': '#aaf'
                     },
                     'children': []
-                    
+
                 }
             ]
         }
@@ -161,24 +161,24 @@ function init() {
       ]
     };
     //end
-    
+
     var infovis = document.getElementById('infovis');
     var w = infovis.offsetWidth, h = infovis.offsetHeight;
-    
+
     //init canvas
     //Create new canvas instances.
     var canvas = new Canvas('mycanvas', {
         'injectInto': 'infovis',
         'width': w,
         'height': h,
-        
+
         //Optional: create a background canvas and plot
         //concentric circles in it.
         'backgroundCanvas': {
             'styles': {
                 'strokeStyle': '#555'
             },
-            
+
             'impl': {
                 'init': function(){},
                 'plot': function(canvas, ctx){
@@ -231,9 +231,9 @@ function init() {
         }
     });
     //end
-    
+
     //init pie
-    //This RGraph instance will be used as the node for 
+    //This RGraph instance will be used as the node for
     //another RGraph instance.
     var pie = new RGraph(canvas, {
         //Add node/edge styles and set
@@ -285,10 +285,10 @@ function init() {
             domElement.onclick = function() {
               rgraph.onClick(node.id, {
                   hideLabels: false
-              });  
+              });
             };
         },
-        
+
         onPlaceLabel: function(domElement, node){
             var style = domElement.style;
             var left = parseInt(style.left);

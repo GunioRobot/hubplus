@@ -1,7 +1,7 @@
 var Log = {
     elem: false,
     write: function(text){
-        if (!this.elem) 
+        if (!this.elem)
             this.elem = document.getElementById('log');
         this.elem.innerHTML = text;
         this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
@@ -265,7 +265,7 @@ function init(){
     //init RGraph
     var rgraph = new RGraph(canvas, {
         //Nodes and Edges parameters
-        //can be overriden if defined in 
+        //can be overriden if defined in
         //the JSON input data.
 
         //This way we can define different node
@@ -284,7 +284,7 @@ function init(){
         //Set polar interpolation.
         //Default's linear.
         interpolation: 'polar',
-        
+
         //Change the transition effect from linear
         //to elastic.
         transition: Trans.Elastic.easeOut,
@@ -293,19 +293,19 @@ function init(){
         fps: 30,
         //Change father-child distance.
         levelDistance: 200,
-        
+
         //This method is called right before plotting
         //an edge. This method is useful to change edge styles
         //individually.
         onBeforePlotLine: function(adj){
             //Add some random lineWidth to each edge.
-            if (!adj.data.$lineWidth) 
+            if (!adj.data.$lineWidth)
                 adj.data.$lineWidth = Math.random() * 5 + 1;
         },
-        
+
         onBeforeCompute: function(node){
             Log.write("centering " + node.name + "...");
-            
+
             //Make right column relations list.
             var html = "<h4>" + node.name + "</h4><b>Connections:</b>";
             html += "<ul>";
@@ -316,7 +316,7 @@ function init(){
             html += "</ul>";
             document.getElementById('inner-details').innerHTML = html;
         },
-        
+
         //Add node click handler and some styles.
         //This method is called only once for each node/label crated.
         onCreateLabel: function(domElement, node){
@@ -338,19 +338,19 @@ function init(){
             var w = domElement.offsetWidth;
             style.left = (left - w / 2) + 'px';
         },
-        
+
         onAfterCompute: function(){
             Log.write("done");
         }
-        
+
     });
     //load graph.
     rgraph.loadJSON(json, 1);
-    
+
     //compute positions and plot
     rgraph.refresh();
     //end
     rgraph.controller.onBeforeCompute(rgraph.graph.getNode(rgraph.root));
     rgraph.controller.onAfterCompute();
-    
+
 }

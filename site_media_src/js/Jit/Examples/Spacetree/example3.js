@@ -1,7 +1,7 @@
 var Log = {
     elem: false,
     write: function(text){
-        if (!this.elem) 
+        if (!this.elem)
             this.elem = document.getElementById('log');
         this.elem.innerHTML = text;
         this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
@@ -761,28 +761,28 @@ function init(){
         'backgroundColor': '#1a1a1a'
     });
     //end
-    
+
     //init st
     //Create a new ST instance
     var st = new ST(canvas, {
         //add styles/shapes/colors
         //to nodes and edges
-        
+
         //set overridable=true if you want
-        //to set styles for nodes individually 
+        //to set styles for nodes individually
         Node: {
           overridable: true,
           width: 60,
           height: 20,
-          color: '#ccc'  
+          color: '#ccc'
         },
         //change the animation/transition effect
         transition: Trans.Quart.easeOut,
-        
+
         onBeforeCompute: function(node){
             Log.write("loading " + node.name);
         },
-        
+
         onAfterCompute: function(node){
             Log.write("done");
         },
@@ -802,7 +802,7 @@ function init(){
             style.width = "60px";
             style.height = "20px";
             label.innerHTML = node.name;
-            //Delete the specified subtree 
+            //Delete the specified subtree
             //when clicking on a label.
             //Only apply this method for nodes
             //in the first level of the tree.
@@ -811,13 +811,13 @@ function init(){
                 label.onclick = function() {
                     if(!removing) {
                         removing = true;
-                        Log.write("removing subtree...");  
+                        Log.write("removing subtree...");
                         //remove the subtree
                         st.removeSubtree(label.id, true, 'animate', {
                             hideLabels: false,
                             onAfterCompute: function() {
                               removing = false;
-                              Log.write("subtree removed");   
+                              Log.write("subtree removed");
                             }
                         });
                     }
@@ -825,7 +825,7 @@ function init(){
             };
         },
         //This method is triggered right before plotting a node.
-        //This method is useful for adding style 
+        //This method is useful for adding style
         //to a node before it's being rendered.
         onBeforePlotNode: function(node) {
             if (node._depth == 1) {
@@ -842,7 +842,7 @@ function init(){
     //Emulate a click on the root node.
     st.onClick(st.root);
     //end
-    
+
     //init handler
     //Add an event handler to the add button for
     //adding a subtree.
@@ -851,7 +851,7 @@ function init(){
     addButton.onclick = function() {
         var type = animate.checked? "animate" : "replot";
         subtree.id = "node02";
-        Log.write("adding subtree...");  
+        Log.write("adding subtree...");
         //add the subtree
         st.addSubtree(subtree, type, {
             hideLabels: false,

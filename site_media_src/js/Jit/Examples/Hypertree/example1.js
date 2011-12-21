@@ -1,7 +1,7 @@
 var Log = {
     elem: false,
     write: function(text){
-        if (!this.elem) 
+        if (!this.elem)
             this.elem = document.getElementById('log');
         this.elem.innerHTML = text;
         this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
@@ -337,7 +337,7 @@ function init(){
     //end
     var infovis = document.getElementById('infovis');
     var w = infovis.offsetWidth - 50, h = infovis.offsetHeight - 50;
-    
+
     //init canvas
     //Create a new canvas instance.
     var canvas = new Canvas('mycanvas', {
@@ -356,12 +356,12 @@ function init(){
             dim: 9,
             color: "#f00"
         },
-        
+
         Edge: {
             lineWidth: 2,
             color: "#088"
         },
-        
+
         onBeforeCompute: function(node){
             Log.write("centering");
         },
@@ -396,12 +396,12 @@ function init(){
             var w = domElement.offsetWidth;
             style.left = (left - w / 2) + 'px';
         },
-        
+
         onAfterCompute: function(){
             Log.write("done");
-            
+
             //Build the right column relations list.
-            //This is done by collecting the information (stored in the data property) 
+            //This is done by collecting the information (stored in the data property)
             //for all the nodes adjacent to the centered node.
             var node = Graph.Util.getClosestNodeToOrigin(ht.graph, "pos");
             var html = "<h4>" + node.name + "</h4><b>Connections:</b>";
@@ -417,7 +417,7 @@ function init(){
             document.getElementById('inner-details').innerHTML = html;
         }
     });
-    
+
     //load JSON data.
     ht.loadJSON(json);
     //compute positions and plot.

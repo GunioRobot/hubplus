@@ -1,4 +1,4 @@
- 
+
 {% extends "site_base.html" %}
 
 {% load i18n %}
@@ -25,18 +25,18 @@
       {% endif %}
     </div>
 
-    
+
     <div id="page_image" class="image member">{% avatar other_user 180 %}</div>
     {% if is_me %}
     <a href="{% url avatar_change %}" id="avatar_replace">(replace)</a>
     {% endif %}
-    
+
     <ul id="actions" class="link_list">
       <li class="first"><a href="/tweets/toggle_follow/{{other_user.username}}/">Follow {{other_user.get_profile.name}}</a></li>
       <li class="last"><a href="{% url messages_all_to other_user.username %}">Message {{other_user.get_profile.name}}</a></li>
-    </ul> 
+    </ul>
   </div>
-  
+
   <div id="info" class="block_column">
     <ul class="icon_text_button_set">
       <li><a href="#overlay" class="icon_text_button bt_permissions" rel="#overlay" id="{{profile.edit_key}}permissionedit">Permissions</a></li>
@@ -46,7 +46,7 @@
 	<dl>
 	  {% plus_tag 'Interests' 'interests'  profile  profile.user %}
 	</dl>
-      </li>  
+      </li>
       <li>
 	<dl class="disabled"><dt >{% trans "Region" %} : </dt>
 	  <dd>
@@ -73,7 +73,7 @@
       <br />
       <li class="place">
 	   {% editable "Location" profile 'place' 'Your Location' %}
-      </li>	
+      </li>
     </ul>
   </div>
 </div>
@@ -88,7 +88,7 @@
     <h3>Search</h3>
     <form>
       <input name="search_term" type="text" class="text" /> <input class="button" type="submit" value="Search" /><br />
-      <input name="current_area" type="checkbox" checked="checked" />Members only<br />      
+      <input name="current_area" type="checkbox" checked="checked" />Members only<br />
     </form>
 </div>
 
@@ -106,7 +106,7 @@
 	<li><a href="#" class="tag pop7">developement</a></li>
 	<li><a href="#" class="tag pop3">energy</a></li>
 
-	<li><a href="#" class="tag pop6">environment</a></li> 
+	<li><a href="#" class="tag pop6">environment</a></li>
 	<li><a href="#" class="tag pop8">fairtrade</a></li>
 	<li><a href="#" class="tag pop1">gender</a></li>
 	<li><a href="#" class="tag pop8">green</a></li>
@@ -114,7 +114,7 @@
 	<li><a href="#" class="tag pop4">innovation</a></li>
 	<li><a href="#" class="tag pop2">living</a></li>
 	<li><a href="#" class="tag pop6">product</a></li>
-	<li><a href="#" class="tag pop8">reference</a></li> 
+	<li><a href="#" class="tag pop8">reference</a></li>
 	<li><a href="#" class="tag pop5">salad</a></li>
 	<li><a href="#" class="tag pop5">org</a></li>
 

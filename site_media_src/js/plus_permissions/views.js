@@ -52,7 +52,7 @@ var setup_sliders = function(resource_id, resource_class, json){
 	var obj_class = slider_group.attr('id').split('-')[0];
 	var tbody = slider_group.find('tbody');
 	var heights = create_slider_points(tbody);
-	
+
 	var interface_levels = sliders[obj_class]['interface_levels'];
 	var constraints = sliders[obj_class]['constraints'];
 	var interface_limits_map = {};

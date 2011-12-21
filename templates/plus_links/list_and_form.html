@@ -6,14 +6,14 @@
     {% for l, l_del in links %}
     <li>
       {% if l.text %}
-      <dl id='links{{l.id}}'><dd> <a href="{{l.url}}">{{l.text}}</a> 
+      <dl id='links{{l.id}}'><dd> <a href="{{l.url}}">{{l.text}}</a>
 	  {% if l_del %}&nbsp;<a class="remove_link button" href="" id="{% url remove_link l.id %}">X</a>{% endif %}
       </dd></dl>
       {% endif %}
     </li>
     {% endfor %}
     <li>
-      
+
       {% if can_create %}
       {% togglable "Add a link" %}
       <form target="{% url add_link %}" class="link_form">
@@ -31,9 +31,9 @@
 	    <td><input type="submit" value="{% trans 'add' %}" class='submit_link button' /></td>
 	  </tr>
         </table>
-	
+
       </form>
-      
+
       {% endtogglable %}
       {% endif %}
     </li>

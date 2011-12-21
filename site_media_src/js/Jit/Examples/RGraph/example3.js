@@ -1,7 +1,7 @@
 var Log = {
     elem: false,
     write: function(text){
-        if (!this.elem) 
+        if (!this.elem)
             this.elem = document.getElementById('log');
         this.elem.innerHTML = text;
         this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
@@ -18,7 +18,7 @@ function init(){
     var infovis = document.getElementById('infovis');
     var w = infovis.offsetWidth, h = infovis.offsetHeight;
 
-    //init data    
+    //init data
     var json = {
         "id": "190_0",
         "name": "Pearl Jam",
@@ -425,10 +425,10 @@ function init(){
         }],
         "data": []
     };
-    
+
     var graph = '[{id:"190_0", adjacencies:["node0"]}, {id:"node0", name:"node0 name", data:{$dim:8.660354683365695, "some other key":"some other value"}, adjacencies:["node1", "node2", "node3", "node4", "node5"]}, {id:"node1", name:"node1 name", data:{$dim:21.118129724156983, "some other key":"some other value"}, adjacencies:["node0", "node2", "node3", "node4", "node5"]}, {id:"node2", name:"node2 name", data:{$dim:6.688951018413683, "some other key":"some other value"}, adjacencies:["node0", "node1", "node3", "node4", "node5"]}, {id:"node3", name:"node3 name", data:{$dim:19.78771599710248, "some other key":"some other value"}, adjacencies:["node0", "node1", "node2", "node4", "node5"]}, {id:"node4", name:"node4 name", data:{$dim:3.025781742947326, "some other key":"some other value"}, adjacencies:["node0", "node1", "node2", "node3", "node5"]}, {id:"node5", name:"node5 name", data:{$dim:9.654383829711456, "some other key":"some other value"}, adjacencies:["node0", "node1", "node2", "node3", "node4"]}, {id:"4619_46", adjacencies:["190_0"]}, {id:"236585_30", adjacencies:["190_0"]}, {id:"131161_18", adjacencies:["190_0"]}, {id:"41529_12", adjacencies:["190_0"]}]';
     //end
-    
+
     //init canvas
     //Create a new canvas instance.
     var canvas = new Canvas('mycanvas', {
@@ -483,11 +483,11 @@ function init(){
             if (node._depth <= 1) {
                 style.fontSize = "0.8em";
                 style.color = "#ccc";
-            
+
             } else if(node._depth == 2){
                 style.fontSize = "0.7em";
                 style.color = "#494949";
-            
+
             } else {
                 style.display = 'none';
             }
@@ -499,7 +499,7 @@ function init(){
     });
     //load JSON data.
     rgraph.loadJSON(json);
-    
+
     //add some extra edges to the tree
     //to make it a graph (just for fun)
     rgraph.graph.addAdjacence({
@@ -512,11 +512,11 @@ function init(){
     }, {
         'id': '4619_46'
     }, null);
-    
+
     //Compute positions and plot
     rgraph.refresh();
     //end
-    
+
     //Global Options
     //Define a function that returns the selected duration
     function getDuration() {
@@ -535,10 +535,10 @@ function init(){
     function hideLabels() {
         return document.getElementById('hide-labels').checked;
     };
-    
+
     //init handlers
     //Add event handlers to the right column controls.
- 
+
     //Remove Nodes
     var button = document.getElementById('remove-nodes');
     button.onclick = function() {
@@ -581,7 +581,7 @@ function init(){
     button = document.getElementById('sum');
     button.onclick = function(){
         //get graph to add.
-        var trueGraph = eval('(' + graph + ')');        
+        var trueGraph = eval('(' + graph + ')');
         //get animation type.
         var stype = document.getElementById('select-type-sum');
         var sindex = stype.selectedIndex;
@@ -602,7 +602,7 @@ function init(){
     button = document.getElementById('morph');
     button.onclick = function(){
         //get graph to morph to.
-        var trueGraph = eval('(' + graph + ')');        
+        var trueGraph = eval('(' + graph + ')');
         //get animation type.
         var stype = document.getElementById('select-type-morph');
         var sindex = stype.selectedIndex;

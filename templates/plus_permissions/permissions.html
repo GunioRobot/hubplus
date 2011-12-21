@@ -47,7 +47,7 @@
 	    {% endfor %}
 	  </tr>
 	  {% for agent_ref, agent_class, agent_data, visible in slider_info %}
-	 {% if visible %} 
+	 {% if visible %}
 	  <tr {% if visible %}{% else %}style="display:none;"{% endif %} id="agent-{{agent_class}}-{{agent_ref.id}}" {% if forloop.first %}class="first"{% endif %}{% if forloop.last %}class="last"{% endif %}>
 	    <td class="group_label">
 	      {{agent_ref.get_display_name}}
@@ -61,7 +61,7 @@
 	      </div>
 	      {% endif %}
 	      {% endif %}
-	    </td>	
+	    </td>
 	    {% endfor %}
 	  </tr>
 	  {% endif %}
@@ -80,4 +80,4 @@
 
 
 
-	
+

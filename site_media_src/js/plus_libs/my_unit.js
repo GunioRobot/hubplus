@@ -25,8 +25,8 @@ function TestCase(report) {
 	this.count++;
 	return false;
     }
-    
-    
+
+
     o.assertFalse = function(e,x) {
 	if (!x) { return true; }
 	report("error "+e);
@@ -57,7 +57,7 @@ function TestCase(report) {
 
     o.assertStarts = function(e,match,s) {
 	if ( s.substr(0,match.length) == match) {
-	    return true; 
+	    return true;
 	}
 	report("error "+e + " (("+ s +")) doesn't start with ((" + match+ "))");
 	this.count++;
@@ -72,11 +72,11 @@ function TestCase(report) {
 	    document.writeln('There are errors');
 	    for (i=0;i<logs.length;i++) {
 		document.writeln(logs[i]);
-	    } 
-	}	
+	    }
+	}
     }
 
-    
+
     o.equalArrays = function(array1, array2) {
 	var temp = new Array();
 	if ( (!array1[0]) || (!array2[0]) ) { // If either is not an array
@@ -111,7 +111,7 @@ function TestCase(report) {
 	if (this.equalArrays(xs,ys)) { return true; }
 	report("error "+e+", arrays " + xs + " and "+ ys +" are not equal");
 	return false;
-    }    
+    }
 
     return o;
 }
@@ -121,6 +121,6 @@ function inspect_fields(x) {
     for (var i in x) {
 	b=b+', '+i;
     }
-    return b;  
+    return b;
 }
-	
+

@@ -7,6 +7,6 @@ var plus_feed_ready = function () {
 
 var setup_feed_item_reply = function(ele) {
   var manager = jq(ele);
-  
+
 };
 

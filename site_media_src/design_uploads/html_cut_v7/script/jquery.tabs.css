@@ -43,7 +43,7 @@
 	background: #fff;
 	border: 1px solid black;
 	border-width: 1px 1px 0;
-    white-space: nowrap; /* required in IE 6 */    
+    white-space: nowrap; /* required in IE 6 */
 }
 .tabs-nav .tabs-selected a {
     color: #fff;

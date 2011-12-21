@@ -1,4 +1,4 @@
-{% load i18n %} 
+{% load i18n %}
 {% load timezone_filters %}
 
 <div id="trash">
@@ -12,10 +12,10 @@
             </tr>
         </thead>
         <tbody>
-            {% for message in trash %} 
+            {% for message in trash %}
                 <tr>
                     <td>{% ifequal message.sender user %}Me{% else %}{{ message.sender }}{% endifequal %}</td>
-                    <td> 
+                    <td>
                         {{ message.subject }}
                     </td>
                     <td>{{ message.sent_at|localtime:account.timezone|date:_("DATETIME_FORMAT") }}</td>

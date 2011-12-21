@@ -14,14 +14,14 @@
 {% block head_title %}{% blocktrans %}Photo Details{% endblocktrans %}{% endblock %}
 
 {% block body %}
-  
+
     <div class="right_panel">
         {% include "photos/photo_right_panel.html" %}
     </div>
-    
+
     <div class="left_panel">
     <h1>{% trans "Photo Details" %}</h1>
-    
+
     {% if photo %}
         <div class="gallery-photo">
             <img src="{{ photo_url }}" alt="{{ photo.title }}"/>
@@ -32,21 +32,21 @@
         <div class="photo-caption">
             <p>{{ photo.caption }}</p>
         </div>
-        
+
         <div class="form-toggle">
             <p><span id="flag-toggle"><img src="{{MEDIA_URL}}pinax/images/silk/icons/flag_red.png" />{% trans "Flag as inappropriate" %}</span></p>
              <div id="flag-form" style="display: none;">
                 {% flag photo request.user.id %}
              </div>
         </div>
-        
+
         <h3>Comments on This Photo:</h3>
         {% comments photo %}
     {% else %}
     <p>No photos were found.</p>
     {% endif %}
     </div>
-    
+
 {% endblock %}
 
 
@@ -63,7 +63,7 @@
                 $('#flag-form').show();
                 $('#flag-form ul.errorlist').autoscroll();
             }
-            
+
         });
     </script>
 {% endblock %}

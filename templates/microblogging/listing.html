@@ -12,11 +12,11 @@
 {% if feed_items %}
   <ul id="feed" class="content_list">
     {% for item in feed_items %}
-    
+
     <li>
       {% one_item_already_loaded item %}
     </li>
-    
+
     {% endfor %}
   </ul>
 
@@ -28,12 +28,12 @@
      {% else %}
         {% if IS_GROUP_TYPE %}
            <p>{% blocktrans %}There is no activity on this{% endblocktrans %} {{GROUP_OR_HUB}}</p>
-        {% else %} 
+        {% else %}
            <p>{% blocktrans %}There are currently no status updates.{% endblocktrans %}</p>
 	{% endif %}
-   
+
      {% endif %}
-   
+
   {% endif %}
   {% endcomment %}
 {% endif %}

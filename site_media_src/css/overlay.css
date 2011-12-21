@@ -1,4 +1,4 @@
-/* Overlay */ 
+/* Overlay */
 
 div.overlay {
     /* growing background image */
@@ -8,7 +8,7 @@ div.overlay {
     width		: 800px;
     height		: 624px;
 
-    /* initially overlay is hidden */ 
+    /* initially overlay is hidden */
     display		: none;
 
     /* some padding to layout nested elements nicely */

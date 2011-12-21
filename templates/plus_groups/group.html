@@ -13,7 +13,7 @@
 {% block extra_head %}
 
         <link rel="alternate" type="application/rss+xml"
-              title="{{group.get_display_name}}" href="/groups/{{group.id}}/rss"> 
+              title="{{group.get_display_name}}" href="/groups/{{group.id}}/rss">
 
 {% endblock %}
 
@@ -32,17 +32,17 @@
     </div>
 
   <div id="info" class="block_column">
-    
+
     {% if permissions %}
     <ul class="icon_text_button_set">
       <li><a href="#overlay" class="icon_text_button bt_permissions" rel="#overlay" id="{{group.edit_key}}permissionedit">{% trans "Permissions" %}</a></li>
     </ul>
     {% endif %}
-    
+
     <h3>{% trans "About" %}</h3>
-    
+
     <div id='ajax_select_list_url_TgGroup-{{group.id}}-group_type_widget' href='{% url groups:group_type_ajax %}'></div>
-    
+
     <ul class="yui-skin-sam">
       {% if editable_group_type %}
           {% if group.should_show_group_type %}
@@ -56,14 +56,14 @@
 	  </li>
 	  -->
       {% endif %}
-      
+
       {% if group.should_show_description %}
       {% autoescape off %}
       {% editable "Description" group 'description' 'Description of the group' %}
       {% endautoescape %}
-      
+
       {% endif %}
-      
+
       {% if group.should_show_address %}
       {% editable "Address" group 'address' 'Address' %}
       {% endif %}
@@ -77,13 +77,13 @@
 	<div class=""><a href="{% url groups:group host_group_id%}">{{group.get_admin_group.get_display_name}}</a></div>
       </li>
       {% endif %}
-      
+
     </ul>
-    
+
     <h3>{% trans "Links" %}</h3>
     {% plus_links target_class target_id %}
-    
-    
+
+
     <h3>{% trans "Skills and Needs" %}</h3>
 
     <div>
@@ -99,7 +99,7 @@
 	</li>
       </ul>
     </div>
-    
+
     <div>
       <ul>
 	<li>
@@ -114,7 +114,7 @@
       </ul>
     </div>
   </div>
-  
+
   <div id="extra" class="block_column">
     <div id="page_image" class="image group">
       {% avatar group 180 %}
@@ -144,27 +144,27 @@
       {% if message %}
       <li class="first"><a href="{% url plus_groups:message_members group.id %}">Message members</a></li>
       {% endif %}
-      
+
       {% if invite %}
       <li><a href="{% url plus_groups:invite_to_group group.id %}">Invite members</a></li>
       {% endif %}
-      
+
 
     </ul>
   </div>
 
-  
+
 
 </div>
 <!--div id="section_tab_navigation" class="section"-->
 {% include "plus_groups/tabbed_subs.html" %}
-<!--/div-->	
+<!--/div-->
 
 {% if can_delete %}
 
 <hr/>
 <a href="{% url plus_groups:delete_group group_id %}">Delete this group</a>
-{% endif %}  
+{% endif %}
 
 {% endblock %}
 

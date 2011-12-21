@@ -72,10 +72,10 @@ textarea {
         width: 300px;
 }
 input.link_text {
-        width: 90%; 
+        width: 90%;
 }
 input.url_text {
-        width: 90%; 
+        width: 90%;
 }
 .large input.text,
 input.text.large {
@@ -375,7 +375,7 @@ form fieldset .checkboxes select {
 	border-color: #bbb #999 #999 #bbb;
     color       : #222;
 	cursor		: pointer;
-	padding		: 3px 5px 3px;	
+	padding		: 3px 5px 3px;
 	text-transform	: uppercase;
 }
 

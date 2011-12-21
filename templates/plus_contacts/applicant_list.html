@@ -10,7 +10,7 @@
 <div class="block">
 
 <table class="list_of_applications">
-  
+
 <tr>
 	<th class='name'>{% trans 'Name' %}</th>
 	<th class='message'>{% trans 'Message' %}</th>
@@ -30,7 +30,7 @@
       {% if app.group %}
       <dt class="applicant_group">{% trans 'Joining' %}</dt><dd>{{app.group.get_display_name}}</dd>
       {% endif %}
-    </dl>      
+    </dl>
   </td>
   <td>{{app.date}}</td>
   <td>
